@@ -57,3 +57,165 @@ Under "SPONSORS ADD INFO HERE" heading below, include the following:
 - Ends October 21, 2022 20:00 UTC
 
 [ ⭐️ SPONSORS ADD INFO HERE ]
+
+## Contracts
+
+### Core
+
+##### LBToken
+
+- 227 sloc
+- External contracts called: None
+- Libraries used: LBErrors, EnumerableSet
+
+##### LBPair
+
+- 837 sloc
+- External contracts called: ERC20, LBFactory, ILBFlashLoanCallback
+- Libraries used: LBToken, BinHelper, Math512Bits, SafeCast, SafeMath, TreeMath, Constants, ReentrancyGuardUpgradeable, Oracle, Decoder, SwapHelper, FeeDistributionHelper, TokenHelper
+
+##### LBFactory
+
+- 507 sloc
+- External contracts called: LBPair
+- Libraries used: EnumerableSet, Clones, LBErrors, PendingOwnable, Constants, Decoder, SafeCast
+
+##### LBRouter
+
+- 837 sloc
+- External contracts called: LBPair, JoePair
+- Libraries used: LBErrors, BinHelper, FeeHelper, TokenHelper, Math512Bits, SwapHelper, Constants
+
+##### LBQuoter
+
+- 214 sloc
+- External contracts called: LBPair, JoeFactory, LBFactory, LBRouter
+- Libraries used: JoeLibrary, BinHelper, Math512Bits
+
+##### LBErrors
+
+- 148 sloc
+- External contracts called: None
+- Libraries used: None
+
+### Libraries
+
+##### BinHelper
+
+- 48 sloc
+- External contracts called: None
+- Libraries used: Math128x128, LBErrors
+
+##### BitMath
+
+- 133 sloc
+- External contracts called: None
+- Libraries used: None
+
+##### Buffer
+
+- 24 sloc
+- External contracts called: None
+- Libraries used: None
+
+##### Constants
+
+- 11 sloc
+- External contracts called: None
+- Libraries used: None
+
+##### Decoder
+
+- 22 sloc
+- External contracts called: None
+- Libraries used: None
+
+##### Encoder
+
+- 22 sloc
+- External contracts called: None
+- Libraries used: None
+
+##### FeeDistributionHelper
+
+- 52 sloc
+- External contracts called: ERC20
+- Libraries used: LBErrors, FeeHelper, Constants, TokenHelper, SafeCast
+
+##### FeeHelper
+
+- 145 sloc
+- External contracts called: None
+- Libraries used: SafeCast, SafeMath, Constants
+
+##### JoeLibrary
+
+- 50 sloc
+- External contracts called: None
+- Libraries used: LBErrors
+
+##### Math128x128
+
+- 183 sloc
+- External contracts called: None
+- Libraries used: LBErrors, Math512Bits, BitMath, Constants
+
+##### Math512Bits
+
+- 229 sloc
+- External contracts called: None
+- Libraries used: LBErrors, BitMath
+
+##### Oracle
+
+- 166 sloc
+- External contracts called: None
+- Libraries used: LBErrors, Samples, Buffer
+
+##### PendingOwnable
+
+- 91 sloc
+- External contracts called: None
+- Libraries used: LBErrors
+
+##### ReentrancyGuardUpgradeable
+
+- 43 sloc
+- External contracts called: None
+- Libraries used: LBErrors
+
+##### SafeCast
+
+- 194 sloc
+- External contracts called: None
+- Libraries used: LBErrors
+
+##### SafeMath
+
+- 16 sloc
+- External contracts called: None
+- Libraries used: None
+
+##### Samples
+
+- 103 sloc
+- External contracts called: None
+- Libraries used: Encoder, Decoder
+
+##### SwapHelper
+
+- 120 sloc
+- External contracts called: None
+- Libraries used: FeeHelper, Constants, BinHelper, SafeMath, FeeDistributionHelper, Math512Bits
+
+##### TokenHelper
+
+- 75 sloc
+- External contracts called: None
+- Libraries used: LBErrors, Samples, Buffer
+
+##### TreeMath
+
+- 101 sloc
+- External contracts called: None
+- Libraries used: LBErrors, BitMath
