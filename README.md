@@ -56,7 +56,34 @@ Under "SPONSORS ADD INFO HERE" heading below, include the following:
 - Starts October 12, 2022 20:00 UTC
 - Ends October 21, 2022 20:00 UTC
 
-[ ⭐️ SPONSORS ADD INFO HERE ]
+## Description
+
+Describe any novel or unique curve logic or mathematical models implemented in the contracts:
+* Price curve is discretized into constant sum bins
+* We use 128x128 fixed-point binary numbers to cover the entire price range
+* The max number of bins is 2**24
+* Each pair has a three-level trie that tracks the presence of liquidity in each bin
+
+Does the token conform to the ERC-20 standard? In what specific ways does it differ?
+* The token doesn't conform to the ERC-20 standard, but it's closer to the ERC-1155 standard.
+* The token can only be used for sets of ERC-20, and thus, can't create any ERC721. It also removes the callbacks for safety reasons.
+
+Identify any areas of specific concern in reviewing the code:
+* The volatility accumulator formula has changed since the whitepaper was published, reviewers should refer to the docs for the most up to date version.
+* One area of concern is whether users can "steal" tokens, i.e. they get more than expected. For example:
+  * Receiving more tokens than expected during a swap
+  * Performing a successful flash loan without repaying back the loaned tokens or the fee
+  * Receiving more liquidity tokens than expected when adding liquidity
+  * Receiving more tokens than expected when liquidity is removed
+  * Receiving more fees than expected when fees are claimed
+* Math rounding should never favour the user. For example, when liquidity is removed, token amounts should be rounded down to ensure they don't get more than expected and when an user swaps, it should round up the amountIn, while rounding down the amountOut to make sure they don't get more than expected.
+* Ensuring invariants hold. For example:
+  * When adding liquidity, reserves should only increase
+  * When doing a flashLoan, fees should only increase
+  * When removing liquidity, reserves should only decrease
+  * When swapping tokens, `L` should remain constant, while `x` and `y` should follow `L = p * x + y` and fees should only increase
+  * When adding liquidity to the active bin, if the tokens are not added with the same ratio as the reserve of the active bin, the fees should only increase
+  * When claiming fees, the fees should only decrease and the reserves should stay constant
 
 ## Contracts
 
