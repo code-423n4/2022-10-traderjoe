@@ -4,8 +4,8 @@
 - Join [C4 Discord](https://discord.gg/code4rena) to register
 - Submit findings [using the C4 form](https://code4rena.com/contests/2022-10-trader-joe-contest/submit)
 - [Read our guidelines for more details](https://docs.code4rena.com/roles/wardens)
-- Starts October 12, 2022 20:00 UTC
-- Ends October 21, 2022 20:00 UTC
+- Starts October 14, 2022 20:00 UTC
+- Ends October 23, 2022 20:00 UTC
 
 ## Description
 
