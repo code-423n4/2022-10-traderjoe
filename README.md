@@ -11,15 +11,15 @@
 
 This repository contains the Liquidity Book contracts, as well as tests and deploy scripts.
 
-- The [LBPair](./src/LBPair.sol) is the contract that contains all the logic of the actual pair for swaps, adds, removals of liquidity and fee claiming. This contract should never be deployed directly, and the factory should always be used for that matter.
+- The [LBPair](https://github.com/code-423n4/2022-10-traderjoe/blob/main//src/LBPair.sol) is the contract that contains all the logic of the actual pair for swaps, adds, removals of liquidity and fee claiming. This contract should never be deployed directly, and the factory should always be used for that matter.
 
-- The [LBToken](./src/LBToken.sol) is the contract that is used to calculate the shares of a user. The LBToken is a new token standard that is similar to ERC-1155, but without any callbacks (for safety reasons) and any functions or variables relating to ERC-721. To make liquidity management easier, helper functions were added to return user's positions.
+- The [LBToken](https://github.com/code-423n4/2022-10-traderjoe/blob/main//src/LBToken.sol) is the contract that is used to calculate the shares of a user. The LBToken is a new token standard that is similar to ERC-1155, but without any callbacks (for safety reasons) and any functions or variables relating to ERC-721. To make liquidity management easier, helper functions were added to return user's positions.
 
-- The [LBFactory](./src/LBPair.sol) is the contract used to deploy the different pairs and acts as a registry for all the pairs already created. There are also privileged functions such as setting the parameters of the fees, the flashloan fee, setting the pair implementation, set if a pair should be ignored by the quoter and add new presets. Unless the `creationUnlocked` is `true`, only the owner of the factory can create pairs.
+- The [LBFactory](https://github.com/code-423n4/2022-10-traderjoe/blob/main//src/LBPair.sol) is the contract used to deploy the different pairs and acts as a registry for all the pairs already created. There are also privileged functions such as setting the parameters of the fees, the flashloan fee, setting the pair implementation, set if a pair should be ignored by the quoter and add new presets. Unless the `creationUnlocked` is `true`, only the owner of the factory can create pairs.
 
-- The [LBRouter](./src/LBRouter.sol) is the main contract that user will interact with as it adds security checks. Most users shouldn't interact directly with the pair.
+- The [LBRouter](https://github.com/code-423n4/2022-10-traderjoe/blob/main//src/LBRouter.sol) is the main contract that user will interact with as it adds security checks. Most users shouldn't interact directly with the pair.
 
-- The [LBQuoter](./src/LBQuoter.sol) is a contract that is used to return the best route of all those given. This should be used before a swap to get the best return on a swap.
+- The [LBQuoter](https://github.com/code-423n4/2022-10-traderjoe/blob/main//src/LBQuoter.sol) is a contract that is used to return the best route of all those given. This should be used before a swap to get the best return on a swap.
 
 For more information, go to the [documentation](https://docs.traderjoexyz.com/) and the [whitepaper](https://github.com/traderjoe-xyz/LB-Whitepaper/blob/main/Joe%20v2%20Liquidity%20Book%20Whitepaper.pdf).
 
@@ -51,6 +51,8 @@ Identify any areas of specific concern in reviewing the code:
   * When claiming fees, the fees should only decrease and the reserves should stay constant
 
 ## Contracts
+
+All contracts under `src` are in Scope for this contest, including `src/libraries` and `src/interfaces`. Contracts under `lib` are not in Scope.
 
 ### Core
 
