@@ -266,3 +266,9 @@ To run tests, run the following command:
 ```
 forge test
 ```
+
+To run slither, run the following command:
+
+```
+slither --solc-remaps "ds-test/=lib/forge-std/lib/ds-test/src/ forge-std/=lib/forge-std/src/ openzeppelin/=lib/openzeppelin-contracts/contracts/" src/
+```
