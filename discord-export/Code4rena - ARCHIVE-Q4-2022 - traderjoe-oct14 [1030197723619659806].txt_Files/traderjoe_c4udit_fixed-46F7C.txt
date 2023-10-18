@@ -1,0 +1,190 @@
+Files analyzed:
+- src/LBErrors.sol
+- src/LBFactory.sol
+- src/LBPair.sol
+- src/LBQuoter.sol
+- src/LBRouter.sol
+- src/LBToken.sol
+- src/interfaces/IJoeFactory.sol
+- src/interfaces/IJoePair.sol
+- src/interfaces/IJoeRouter01.sol
+- src/interfaces/IJoeRouter02.sol
+- src/interfaces/ILBFactory.sol
+- src/interfaces/ILBFlashLoanCallback.sol
+- src/interfaces/ILBPair.sol
+- src/interfaces/ILBRouter.sol
+- src/interfaces/ILBToken.sol
+- src/interfaces/IPendingOwnable.sol
+- src/interfaces/IWAVAX.sol
+- src/libraries/BinHelper.sol
+- src/libraries/BitMath.sol
+- src/libraries/Buffer.sol
+- src/libraries/Constants.sol
+- src/libraries/Decoder.sol
+- src/libraries/Encoder.sol
+- src/libraries/FeeDistributionHelper.sol
+- src/libraries/FeeHelper.sol
+- src/libraries/JoeLibrary.sol
+- src/libraries/Math128x128.sol
+- src/libraries/Math512Bits.sol
+- src/libraries/Oracle.sol
+- src/libraries/PendingOwnable.sol
+- src/libraries/ReentrancyGuardUpgradeable.sol
+- src/libraries/SafeCast.sol
+- src/libraries/SafeMath.sol
+- src/libraries/Samples.sol
+- src/libraries/SwapHelper.sol
+- src/libraries/TokenHelper.sol
+- src/libraries/TreeMath.sol
+
+Issues found:
+ G002:
+  src/LBFactory.sol::73 => return allLBPairs.length;
+  src/LBFactory.sol::79 => return _quoteAssetWhitelist.length();
+  src/LBFactory.sol::291 => emit LBPairCreated(_tokenX, _tokenY, _binStep, _LBPair, allLBPairs.length - 1);
+  src/LBPair.sol::274 => for (uint256 i; i < _ids.length; ++i) {
+  src/LBPair.sol::481 => if (_ids.length == 0 || _ids.length != _distributionX.length || _ids.length != _distributionY.length)
+  src/LBPair.sol::493 => liquidityMinted = new uint256[](_ids.length);
+  src/LBPair.sol::496 => for (uint256 i; i < _ids.length; ++i) {
+  src/LBPair.sol::623 => for (uint256 i; i < _ids.length; ++i) {
+  src/LBPair.sol::677 => /// @notice Increase the length of the oracle
+  src/LBPair.sol::701 => for (uint256 i; i < _ids.length; ++i) {
+  src/LBQuoter.sol::59 => if (_route.length < 2) {
+  src/LBQuoter.sol::65 => uint256 swapLength = _route.length - 1;
+  src/LBQuoter.sol::69 => quote.amounts = new uint256[](_route.length);
+  src/LBQuoter.sol::70 => quote.virtualAmountsWithoutSlippage = new uint256[](_route.length);
+  src/LBQuoter.sol::99 => if (LBPairsAvailable.length > 0 && quote.amounts[i] > 0) {
+  src/LBQuoter.sol::100 => for (uint256 j; j < LBPairsAvailable.length; j++) {
+  src/LBQuoter.sol::139 => if (_route.length < 2) {
+  src/LBQuoter.sol::144 => uint256 swapLength = _route.length - 1;
+  src/LBQuoter.sol::148 => quote.amounts = new uint256[](_route.length);
+  src/LBQuoter.sol::149 => quote.virtualAmountsWithoutSlippage = new uint256[](_route.length);
+  src/LBQuoter.sol::176 => if (LBPairsAvailable.length > 0 && quote.amounts[i] > 0) {
+  src/LBQuoter.sol::177 => for (uint256 j; j < LBPairsAvailable.length; j++) {
+  src/LBRouter.sol::43 => if (_pairBinSteps.length == 0 || _pairBinSteps.length + 1 != _tokenPath.length)
+  src/LBRouter.sol::385 => if (_tokenPath[_pairBinSteps.length] != IERC20(wavax))
+  src/LBRouter.sol::386 => revert LBRouter__InvalidTokenPath(address(_tokenPath[_pairBinSteps.length]));
+  src/LBRouter.sol::467 => if (_tokenPath[_pairBinSteps.length] != IERC20(wavax))
+  src/LBRouter.sol::468 => revert LBRouter__InvalidTokenPath(address(_tokenPath[_pairBinSteps.length]));
+  src/LBRouter.sol::541 => IERC20 _targetToken = _tokenPath[_pairs.length];
+  src/LBRouter.sol::569 => if (_tokenPath[_pairBinSteps.length] != IERC20(wavax))
+  src/LBRouter.sol::570 => revert LBRouter__InvalidTokenPath(address(_tokenPath[_pairBinSteps.length]));
+  src/LBRouter.sol::605 => IERC20 _targetToken = _tokenPath[_pairs.length];
+  src/LBRouter.sol::662 => if (_liq.deltaIds.length != _liq.distributionX.length && _liq.deltaIds.length != _liq.distributionY.length)
+  src/LBRouter.sol::673 => depositIds = new uint256[](_liq.deltaIds.length);
+  src/LBRouter.sol::674 => for (uint256 i; i < depositIds.length; ++i) {
+  src/LBRouter.sol::707 => amountsIn = new uint256[](_tokenPath.length);
+  src/LBRouter.sol::708 => // Avoid doing -1, as `_pairs.length == _pairBinSteps.length-1`
+  src/LBRouter.sol::709 => amountsIn[_pairs.length] = _amountOut;
+  src/LBRouter.sol::711 => for (uint256 i = _pairs.length; i != 0; i--) {
+  src/LBRouter.sol::778 => for (uint256 i; i < _pairs.length; ++i) {
+  src/LBRouter.sol::785 => _recipient = i + 1 == _pairs.length ? _to : _pairs[i + 1];
+  src/LBRouter.sol::831 => for (uint256 i; i < _pairs.length; ++i) {
+  src/LBRouter.sol::838 => _recipient = i + 1 == _pairs.length ? _to : _pairs[i + 1];
+  src/LBRouter.sol::878 => for (uint256 i; i < _pairs.length; ++i) {
+  src/LBRouter.sol::885 => _recipient = i + 1 == _pairs.length ? _to : _pairs[i + 1];
+  src/LBRouter.sol::946 => pairs = new address[](_pairBinSteps.length);
+  src/LBRouter.sol::951 => for (uint256 i; i < pairs.length; ++i) {
+  src/LBToken.sol::42 => modifier checkLength(uint256 _lengthA, uint256 _lengthB) {
+  src/LBToken.sol::43 => if (_lengthA != _lengthB) revert LBToken__LengthMismatch(_lengthA, _lengthB);
+  src/LBToken.sol::84 => checkLength(_accounts.length, _ids.length)
+  src/LBToken.sol::87 => batchBalances = new uint256[](_accounts.length);
+  src/LBToken.sol::90 => for (uint256 i; i < _accounts.length; ++i) {
+  src/LBToken.sol::108 => return _userIds[_account].length();
+  src/LBToken.sol::158 => checkLength(_ids.length, _amounts.length)
+  src/LBToken.sol::163 => for (uint256 i; i < _ids.length; ++i) {
+  src/libraries/TokenHelper.sol::76 => if (!(success && (result.length == 0 || abi.decode(result, (bool))))) {
+
+ G003:
+  src/LBFactory.sol::161 => if (_nbPresets > 0) {
+  src/LBFactory.sol::191 => if (_nbAvailable > 0) {
+  src/LBQuoter.sol::79 => if (quote.pairs[i] != address(0) && quote.amounts[i] > 0) {
+  src/LBQuoter.sol::82 => if (reserveIn > 0 && reserveOut > 0) {
+  src/LBQuoter.sol::99 => if (LBPairsAvailable.length > 0 && quote.amounts[i] > 0) {
+  src/LBQuoter.sol::154 => for (uint256 i = swapLength; i > 0; i--) {
+  src/LBQuoter.sol::157 => if (quote.pairs[i - 1] != address(0) && quote.amounts[i] > 0) {
+  src/LBQuoter.sol::160 => if (reserveIn > 0 && reserveOut > quote.amounts[i]) {
+  src/LBQuoter.sol::176 => if (LBPairsAvailable.length > 0 && quote.amounts[i] > 0) {
+  src/libraries/Math128x128.sol::71 => for (int256 delta = int256(1 << (LOG_SCALE_OFFSET - 1)); delta > 0; delta >>= 1) {
+
+ G006:
+  src/LBFactory.sol::265 => bytes32 _salt = keccak256(abi.encode(_tokenA, _tokenB, _binStep));
+  src/LBPair.sol::657 => let slot := keccak256(0, 64)
+  src/LBPair.sol::1001 => _data := sload(keccak256(0, 64))
+
+ G007:
+  src/LBFactory.sol::6 => import "openzeppelin/utils/structs/EnumerableSet.sol";
+  src/LBPair.sol::12 => import "./libraries/FeeDistributionHelper.sol";
+  src/LBPair.sol::15 => import "./libraries/ReentrancyGuardUpgradeable.sol";
+  src/LBPair.sol::21 => import "./interfaces/ILBFlashLoanCallback.sol";
+  src/LBRouter.sol::5 => import "openzeppelin/token/ERC20/IERC20.sol";
+  src/LBToken.sol::5 => import "openzeppelin/utils/structs/EnumerableSet.sol";
+  src/interfaces/ILBFactory.sol::5 => import "openzeppelin/token/ERC20/IERC20.sol";
+  src/interfaces/ILBPair.sol::5 => import "openzeppelin/token/ERC20/IERC20.sol";
+  src/interfaces/IWAVAX.sol::5 => import "openzeppelin/token/ERC20/IERC20.sol";
+  src/libraries/FeeDistributionHelper.sol::5 => import "openzeppelin/token/ERC20/IERC20.sol";
+  src/libraries/Math128x128.sol::70 => // The "delta >>= 1" part is equivalent to "delta /= 2", but shifting bits is faster.
+  src/libraries/PendingOwnable.sol::6 => import "../interfaces/IPendingOwnable.sol";
+  src/libraries/TokenHelper.sol::5 => import "openzeppelin/token/ERC20/IERC20.sol";
+
+ G008:
+  src/LBFactory.sol::30 => uint256 public constant override MAX_PROTOCOL_SHARE = 2_500; // 25%
+  src/LBFactory.sol::560 => // Can't overflow as the max value is `max(uint24) * (max(uint24) * max(uint16)) ** 2 < max(uint104)`
+  src/LBFactory.sol::562 => // decimals(variableFeeControl * (volatilityAccumulated * binStep)**2 / 100) = 4 + (4 + 4) * 2 - 2 = 18
+  src/libraries/BinHelper.sol::26 => // can't overflow as `2**23 + log2(price) < 2**23 + 2**128 < max(uint256)`
+  src/libraries/FeeHelper.sol::102 => // Can't overflow as the max value is `max(uint24) * (max(uint24) * max(uint16)) ** 2 < max(uint104)`
+  src/libraries/FeeHelper.sol::104 => // decimals(variableFeeControl * (volatilityAccumulated * binStep)**2 / 100) = 4 + (4 + 4) * 2 - 2 = 18
+  src/libraries/Math128x128.sol::37 => // If we use an offset of 128 bits, y would need 129 bits and y**2 would would overflow and we would have to
+  src/libraries/Math128x128.sol::57 => // Calculate the integer part of the logarithm and add it to the result and finally calculate y = x * 2^(-n).
+  src/libraries/Math128x128.sol::64 => // This is y = x * 2^(-n).
+  src/libraries/Math128x128.sol::79 => // Corresponds to z/2 on Wikipedia.
+  src/libraries/Math512Bits.sol::17 => /// @dev Credit to Remco Bloemen under MIT license https://xn--2-umb.com/21/muldiv
+  src/libraries/Math512Bits.sol::43 => /// @dev Credit to Remco Bloemen under MIT license https://xn--2-umb.com/21/muldiv
+  src/libraries/Math512Bits.sol::79 => /// @dev Credit to Remco Bloemen under MIT license https://xn--2-umb.com/21/muldiv
+  src/libraries/Math512Bits.sol::106 => /// @dev Credit to Remco Bloemen under MIT license https://xn--2-umb.com/21/muldiv
+  src/libraries/Math512Bits.sol::139 => /// @dev Credit to Remco Bloemen under MIT license https://xn--2-umb.com/21/muldiv
+  src/libraries/Math512Bits.sol::171 => // variables such that product = prod1 * 2^256 + prod0.
+  src/libraries/Oracle.sol::162 => _middle = (_low + _high) / 2;
+  src/libraries/TreeMath.sol::105 => // Optimization of `(_id / 256, _id % 256)`
+  src/libraries/TreeMath.sol::114 => // Optimization of `_branchId * 256 + _leafId`
+
+ L003:
+  src/LBErrors.sol::3 => pragma solidity ^0.8.0;
+  src/LBFactory.sol::3 => pragma solidity ^0.8.0;
+  src/LBPair.sol::3 => pragma solidity ^0.8.0;
+  src/LBQuoter.sol::3 => pragma solidity ^0.8.0;
+  src/LBRouter.sol::3 => pragma solidity ^0.8.0;
+  src/LBToken.sol::3 => pragma solidity ^0.8.0;
+  src/interfaces/IJoeFactory.sol::3 => pragma solidity ^0.8.0;
+  src/interfaces/IJoePair.sol::3 => pragma solidity ^0.8.0;
+  src/interfaces/IJoeRouter01.sol::3 => pragma solidity ^0.8.0;
+  src/interfaces/IJoeRouter02.sol::3 => pragma solidity ^0.8.0;
+  src/interfaces/ILBFactory.sol::3 => pragma solidity ^0.8.0;
+  src/interfaces/ILBFlashLoanCallback.sol::3 => pragma solidity ^0.8.0;
+  src/interfaces/ILBPair.sol::3 => pragma solidity ^0.8.0;
+  src/interfaces/ILBRouter.sol::3 => pragma solidity ^0.8.0;
+  src/interfaces/ILBToken.sol::3 => pragma solidity ^0.8.0;
+  src/interfaces/IPendingOwnable.sol::3 => pragma solidity ^0.8.0;
+  src/interfaces/IWAVAX.sol::3 => pragma solidity ^0.8.0;
+  src/libraries/BinHelper.sol::3 => pragma solidity ^0.8.0;
+  src/libraries/BitMath.sol::3 => pragma solidity ^0.8.0;
+  src/libraries/Buffer.sol::3 => pragma solidity ^0.8.0;
+  src/libraries/Constants.sol::3 => pragma solidity ^0.8.0;
+  src/libraries/Decoder.sol::3 => pragma solidity ^0.8.0;
+  src/libraries/Encoder.sol::3 => pragma solidity ^0.8.0;
+  src/libraries/FeeDistributionHelper.sol::3 => pragma solidity ^0.8.0;
+  src/libraries/FeeHelper.sol::3 => pragma solidity ^0.8.0;
+  src/libraries/JoeLibrary.sol::3 => pragma solidity ^0.8.0;
+  src/libraries/Math128x128.sol::3 => pragma solidity ^0.8.0;
+  src/libraries/Math512Bits.sol::3 => pragma solidity ^0.8.0;
+  src/libraries/Oracle.sol::3 => pragma solidity ^0.8.0;
+  src/libraries/PendingOwnable.sol::3 => pragma solidity ^0.8.0;
+  src/libraries/ReentrancyGuardUpgradeable.sol::3 => pragma solidity ^0.8.0;
+  src/libraries/SafeCast.sol::3 => pragma solidity ^0.8.0;
+  src/libraries/SafeMath.sol::3 => pragma solidity ^0.8.0;
+  src/libraries/Samples.sol::3 => pragma solidity ^0.8.0;
+  src/libraries/SwapHelper.sol::3 => pragma solidity ^0.8.0;
+  src/libraries/TokenHelper.sol::3 => pragma solidity ^0.8.0;
+  src/libraries/TreeMath.sol::3 => pragma solidity ^0.8.0;
+
+
